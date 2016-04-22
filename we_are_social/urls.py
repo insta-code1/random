@@ -23,6 +23,7 @@ from magazines import views as magazine_views
 from accounts.views import register, profile, login, logout, cancel_subscription, subscriptions_webhook
 from threads import views as forum_views
 from polls import api_views
+from django.contrib.staticfiles import views as static_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -61,4 +62,7 @@ urlpatterns = [
 
     # Rest API
     url(r'^threads/polls/$', api_views.PollViewSet.as_view()),
+
+    #static urls
+    url(r'^static/(?P<path>.*)$', static_views.serve),
 ]
